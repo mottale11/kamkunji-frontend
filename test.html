@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f3f4f6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2563eb;
+            text-align: center;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Test Page - Kamkunji Store</h1>
+        
+        <div class="test-section">
+            <h2>HTML Test</h2>
+            <p>If you can see this text, HTML is working correctly.</p>
+        </div>
+        
+        <div class="test-section">
+            <h2>CSS Test</h2>
+            <p>If you see styled content with colors and layout, CSS is working.</p>
+        </div>
+        
+        <div class="test-section">
+            <h2>JavaScript Test</h2>
+            <p>Click the button below to test JavaScript:</p>
+            <button onclick="testJavaScript()">Test JavaScript</button>
+            <button onclick="testAlert()">Test Alert</button>
+            <div id="js-result"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Console Test</h2>
+            <p>Open browser console (F12) and check for messages.</p>
+            <button onclick="logToConsole()">Log to Console</button>
+        </div>
+        
+        <div class="test-section">
+            <h2>Navigation Test</h2>
+            <p>Test if you can navigate to other pages:</p>
+            <button onclick="window.location.href='/'">Go to Root</button>
+            <button onclick="window.location.href='/test'">Go to Test Route</button>
+        </div>
+    </div>
+
+    <script>
+        console.log('Test page loaded successfully');
+        
+        function testJavaScript() {
+            const result = document.getElementById('js-result');
+            result.innerHTML = '<p style="color: green;">✅ JavaScript is working!</p>';
+        }
+        
+        function testAlert() {
+            alert('JavaScript alert is working!');
+        }
+        
+        function logToConsole() {
+            console.log('Button clicked - JavaScript is working!');
+            console.log('Current URL:', window.location.href);
+            console.log('User Agent:', navigator.userAgent);
+        }
+        
+        // Test on page load
+        window.addEventListener('load', function() {
+            console.log('Page fully loaded');
+            document.title = 'Test Page - Loaded Successfully';
+        });
+    </script>
+</body>
+</html>

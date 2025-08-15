@@ -1,0 +1,19 @@
+SUPABASE SETUP FOR FRONTEND
+
+To connect your frontend to Supabase:
+
+1. Create a file called .env.local in the frontend directory
+2. Add these lines (replace with your actual values):
+
+VITE_SUPABASE_URL=https://your-project-id.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key-here
+
+3. Get your values from:
+   - Go to https://supabase.com/dashboard
+   - Select your project
+   - Go to Settings → API
+   - Copy Project URL and anon public key
+
+4. Restart your frontend dev server
+
+The frontend will work without this file, but won't connect to your database.
