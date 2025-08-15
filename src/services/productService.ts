@@ -24,7 +24,7 @@ const productService = {
   async getProducts(filters?: ProductFilters): Promise<Product[]> {
     try {
       const response = await apiClient.get<Product[]>('/products', { params: filters });
-      return response;
+      return response.data;
     } catch (error) {
       console.error('Error fetching products:', error);
       throw error;
@@ -35,7 +35,7 @@ const productService = {
   async getProductById(id: string): Promise<Product> {
     try {
       const response = await apiClient.get<Product>(`/products/${id}`);
-      return response;
+      return response.data;
     } catch (error) {
       console.error(`Error fetching product ${id}:`, error);
       throw error;
@@ -46,7 +46,7 @@ const productService = {
   async createProduct(productData: Omit<Product, 'id' | 'created_at' | 'updated_at'>): Promise<Product> {
     try {
       const response = await apiClient.post<Product>('/products', productData);
-      return response;
+      return response.data;
     } catch (error) {
       console.error('Error creating product:', error);
       throw error;
@@ -57,7 +57,7 @@ const productService = {
   async updateProduct(id: string, productData: Partial<Product>): Promise<Product> {
     try {
       const response = await apiClient.put<Product>(`/products/${id}`, productData);
-      return response;
+      return response.data;
     } catch (error) {
       console.error(`Error updating product ${id}:`, error);
       throw error;

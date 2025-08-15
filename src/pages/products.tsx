@@ -9,7 +9,6 @@ import WhatsAppOrder from "@/components/whatsapp-order";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import { Skeleton } from "@/components/ui/skeleton";
-import { MessageCircle } from "lucide-react";
 import productService, { Product, ProductFilters } from "@/services/productService";
 
 interface Category {

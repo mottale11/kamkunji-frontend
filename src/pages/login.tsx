@@ -27,24 +27,19 @@ export default function Login() {
       return;
     }
 
-    login(
-      { email, password },
-      {
-        onSuccess: () => {
-          toast({
-            title: "Success",
-            description: "Logged in successfully",
-          });
-        },
-        onError: (error) => {
-          toast({
-            title: "Error",
-            description: error.message || "Login failed",
-            variant: "destructive",
-          });
-        },
-      }
-    );
+    try {
+      await login({ email, password });
+      toast({
+        title: "Success",
+        description: "Logged in successfully",
+      });
+    } catch (error: unknown) {
+      toast({
+        title: "Error",
+        description: error instanceof Error ? error.message : "Login failed",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -138,4 +133,4 @@ export default function Login() {
       </div>
     </div>
   );
-} 
+}

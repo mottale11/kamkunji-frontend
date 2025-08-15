@@ -60,31 +60,26 @@ export default function Register() {
       return;
     }
 
-    register(
-      {
+    try {
+      await register({
         email: formData.email,
         password: formData.password,
         firstName: formData.firstName || undefined,
         lastName: formData.lastName || undefined,
         phone: formData.phone || undefined,
         address: formData.address || undefined,
-      },
-      {
-        onSuccess: () => {
-          toast({
-            title: "Success",
-            description: "Account created successfully",
-          });
-        },
-        onError: (error) => {
-          toast({
-            title: "Error",
-            description: error.message || "Registration failed",
-            variant: "destructive",
-          });
-        },
-      }
-    );
+      });
+      toast({
+        title: "Success",
+        description: "Account created successfully",
+      });
+    } catch (error: unknown) {
+      toast({
+        title: "Error",
+        description: error instanceof Error ? error.message : "Registration failed",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -275,4 +270,4 @@ export default function Register() {
       </div>
     </div>
   );
-} 
+}

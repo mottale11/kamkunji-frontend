@@ -29,7 +29,7 @@ export const supabase = supabaseUrl && supabaseAnonKey
 
 // Test connection only if properly configured
 if (supabaseUrl && supabaseAnonKey) {
-  supabase.auth.getSession().then(({ data, error }) => {
+  supabase.auth.getSession().then(({ error }) => {
     if (error) {
       console.error('Supabase connection error:', error);
     } else {

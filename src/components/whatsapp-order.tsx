@@ -12,8 +12,7 @@ interface WhatsAppOrderProps {
 export default function WhatsAppOrder({ 
   variant = "default", 
   className = "",
-  businessNumber = WHATSAPP_CONFIG.BUSINESS_NUMBER,
-  businessName = WHATSAPP_CONFIG.BUSINESS_NAME
+  businessNumber = WHATSAPP_CONFIG.BUSINESS_NUMBER
 }: WhatsAppOrderProps) {
   
   const defaultMessage = WHATSAPP_CONFIG.MESSAGES.GENERAL_INQUIRY;

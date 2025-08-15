@@ -13,7 +13,7 @@ export default function Payment() {
   const { toast } = useToast();
 
   const handleBack = () => {
-    navigate(-1);
+    navigate("/checkout");
   };
 
   return (
@@ -50,18 +50,19 @@ export default function Payment() {
 
         {paymentMethod === "mpesa" && (
           <MpesaPayment 
-            amount={0} // You'll need to pass the actual amount
-            onSuccess={() => {
+            amount={1000} // Replace with actual amount from your state/context
+            orderId="order123" // Replace with actual order ID from your state/context
+            onPaymentSuccess={(paymentData) => {
               toast({
                 title: "Payment Successful",
                 description: "Your payment has been processed successfully.",
               });
               navigate("/payment/success");
             }}
-            onError={(error) => {
+            onPaymentError={(errorMsg: string) => {
               toast({
                 title: "Payment Failed",
-                description: error || "There was an error processing your payment.",
+                description: errorMsg || "There was an error processing your payment.",
                 variant: "destructive",
               });
             }}

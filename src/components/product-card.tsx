@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { useAuth } from "@/hooks/useAuth";
 import { ShoppingCart, MessageCircle, Star, Heart } from "lucide-react";
-import { WHATSAPP_CONFIG, openWhatsApp } from "@/config/whatsapp";
+import { openWhatsApp } from "@/config/whatsapp";
 import { Product } from "@/services/productService";
 
 interface ProductCardProps {
@@ -13,9 +11,7 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const { isAuthenticated } = useAuth();
   const { toast } = useToast();
-  const queryClient = useQueryClient();
   const [imageError, setImageError] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -78,11 +74,11 @@ export default function ProductCard({ product }: ProductCardProps) {
             <p className="text-lg font-semibold text-gray-900">
               KSh {parseFloat(product.price.toString()).toLocaleString()}
             </p>
-            {product.originalPrice && (
-              <p className="text-sm text-gray-500 line-through">
-                KSh {parseFloat(product.originalPrice.toString()).toLocaleString()}
-              </p>
-            )}
+            {product.originalPrice !== undefined && (
+      <p className="text-sm text-gray-500 line-through">
+        KSh {parseFloat(String(product.originalPrice)).toLocaleString()}
+      </p>
+    )}
           </div>
         </div>
         
@@ -94,8 +90,8 @@ export default function ProductCard({ product }: ProductCardProps) {
           <div className="flex items-center">
             <Star className="h-4 w-4 text-yellow-400 fill-yellow-400 mr-1" />
             <span className="text-sm text-gray-500">
-              {product.rating || '4.5'} (24)
-            </span>
+      {'4.5'} (24)
+    </span>
           </div>
           <Badge variant="outline" className="capitalize">
             {product.category}

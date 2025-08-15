@@ -1,4 +1,4 @@
-import React from 'react';
+// React is used implicitly with JSX
 import { Switch, Route } from "wouter";
 import FloatingWhatsApp from "@/components/floating-whatsapp";
 import NotFound from "@/pages/not-found";

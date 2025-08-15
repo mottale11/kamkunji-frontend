@@ -41,8 +41,6 @@ export const LIPIA_CONFIG = {
 
 // Helper function to get environment-specific configuration
 export const getLipiaConfig = () => {
-  const isDevelopment = import.meta.env.DEV;
-  
   return {
     ...LIPIA_CONFIG,
     // Override with environment variables if available
