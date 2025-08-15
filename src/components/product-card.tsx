@@ -74,11 +74,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             <p className="text-lg font-semibold text-gray-900">
               KSh {parseFloat(product.price.toString()).toLocaleString()}
             </p>
-            {product.originalPrice !== undefined && (
-      <p className="text-sm text-gray-500 line-through">
-        KSh {parseFloat(String(product.originalPrice)).toLocaleString()}
-      </p>
-    )}
+            {/* Original price display removed as it's not in the Product interface */}
           </div>
         </div>
         

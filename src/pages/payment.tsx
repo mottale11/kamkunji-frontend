@@ -9,7 +9,6 @@ import MpesaPayment from "@/components/mpesa-payment";
 export default function Payment() {
   const [, navigate] = useLocation();
   const [paymentMethod, setPaymentMethod] = useState<"mpesa" | "card">("mpesa");
-  const [isProcessing, setIsProcessing] = useState(false);
   const { toast } = useToast();
 
   const handleBack = () => {
@@ -52,17 +51,17 @@ export default function Payment() {
           <MpesaPayment 
             amount={1000} // Replace with actual amount from your state/context
             orderId="order123" // Replace with actual order ID from your state/context
-            onPaymentSuccess={(paymentData) => {
+            onPaymentSuccess={() => {
               toast({
                 title: "Payment Successful",
                 description: "Your payment has been processed successfully.",
               });
               navigate("/payment/success");
             }}
-            onPaymentError={(errorMsg: string) => {
+            onPaymentError={(error) => {
               toast({
                 title: "Payment Failed",
-                description: errorMsg || "There was an error processing your payment.",
+                description: typeof error === 'string' ? error : "There was an error processing your payment.",
                 variant: "destructive",
               });
             }}
